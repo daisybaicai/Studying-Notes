@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>wave</title>
+</head>
+<body>
+  /水波纹的效果做到需要3点，1.多层圆 位置需要绝对定位 层层重叠 绝对定位的位置可以通过calc 很好的解决
+  2.需要动画animation 配合keyframes. 0% 100% 分别就等于from ,to  3.需要他们的z-index不同 所以延迟出现的时候是一层层叠上去的/
+
+  // animation的几种情况
+  /* @keyframes duration | timing-function | delay |
+      iteration-count | direction | fill-mode | play-state | name */
+    animation: 3s ease-in 1s 2 reverse both paused slidein;
+
+  /* @keyframes duration | timing-function | delay | name */
+    animation: 3s linear 1s slidein;
+
+  /* @keyframes duration | name */
+
+  iteration-count:迭代次数 重复的次数
+  timing-function : 节奏rhythm
+  /* Keyword values */
+  animation-timing-function: ease;
+  animation-timing-function: ease-in;
+  animation-timing-function: ease-out;
+  animation-timing-function: ease-in-out;
+  animation-timing-function: linear;
+  animation-timing-function: step-start;
+  animation-timing-function: step-end;
+  animation: 3s slidein;
+
+  //direction:
+  normal
+  每个循环内动画向前循环，换言之，每个动画循环结束，动画重置到起点重新开始，这是默认属性。
+  alternate
+  动画交替反向运行，反向运行时，动画按步后退，同时，带时间功能的函数也反向，比如，ease-in 在反向时成为ease-out。计数取决于开始时是奇数迭代还是偶数迭代
+  reverse
+  反向运行动画，每周期结束动画由尾到头运行。
+  alternate-reverse
+  反向交替， 反向开始交替
+
+  // fill-mode 保留状态
+  none
+  当动画未执行时，动画将不会将任何样式应用于目标，而是已经赋予给该元素的 CSS 规则来显示该元素。这是默认值。
+  forwards
+  目标将保留由执行期间遇到的最后一个关键帧计算值。
+  backwards
+  动画将在应用于目标时立即应用第一个关键帧中定义的值
+  //animation-play-state 状态 运行或者暂停
+  <div class="wave wave5"></div>
+  <div class="wave wave4"></div>
+  <div class="wave wave3"></div>
+  <div class="wave wave2"></div>
+  <div class="wave wave1"></div>
+  <div class="wave wave0"></div>
+
+<style>
+  .wave{
+  position:absolute;
+  top:calc((100% - 30px)/2);
+  left:calc((100% - 30px)/2);
+  width:30px;
+  height:30px;
+  border-radius:300px;
+}
+.wave0{
+  background:#f00;
+  z-index:2;
+  /* background-size:auto 106%; */
+  animation:w 1s forwards;
+}
+.wave1{
+  background:#d00;
+  z-index:3;
+  animation:w 1s .2s forwards;
+}
+.wave2{
+  background:#b00;
+  z-index:4;
+  animation:w 1s .4s forwards;
+}
+.wave3{
+  background:#900;
+  z-index:5;
+  animation:w 1s .5s forwards;
+}
+.wave4{
+  background:#700;
+  z-index:6;
+  animation:w 1s .8s forwards;
+}
+.wave5{
+  background:#500;
+  z-index:7;
+  animation:w 1s 1s forwards;
+}
+@keyframes w{
+  0%{
+    top:calc((100% - 30px)/2);
+    left:calc((100% - 30px)/2);
+    width:30px;
+    height:30px;
+  }
+  100%{
+    top:calc((100% - 300px)/2);
+    left:calc((100% - 300px)/2);
+    width:300px;
+    height:300px;
+  }
+}
+</style>
+</body>
+</html>

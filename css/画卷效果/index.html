@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>画卷效果</title>
+</he)&ad>
+<body>
+  <div></div>
+// 左右两根卷轴通过 :before,:after 伪类来实现，移动通过 animation 配合keyframes, max-width?
+  <style>
+div {
+  width: 50vw;
+  height: 50vh;
+  background: green;
+  position: relative;
+  max-width: 40px;
+  animation: an1 3s linear forwards;
+}
+  
+  div:before,
+  div:after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 54vh;
+    background: orange;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    content: "";
+  }
+  div:after {
+    background: #f36;
+    transform: translate(20px, -50%);
+    animation: an2 3s linear forwards;
+  }
+    @keyframes an1{
+      100% {
+        max-width: 50vw;
+      }
+    }
+    @keyframes an2 {
+      100% {
+        transform: translate(50vw, -50%);
+      }
+    }
+  </style>
+</body>
+</html>
